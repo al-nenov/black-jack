@@ -68,6 +68,10 @@ class Player {
 
 function dealNewCard() {
   const firstCard = deck[0];
+  if(firstCard === undefined){
+      alert("Deck is empty");
+      return;
+  }
   deck.splice(0, 1);
   return firstCard;
 }
@@ -77,6 +81,14 @@ let player = new Player(2, "player1");
 
 dealer.dealCards();
 player.dealCards();
+
+
+//Deal two cards with hit of a button
+let hitButton = document.getElementById("hit");
+hitButton.addEventListener("click",function(){
+    player.dealCards();
+})
+
 
 //remaining cards
 const deckTable = document.getElementById("deck");

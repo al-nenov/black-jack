@@ -47,6 +47,16 @@
 
 /**/
 
+
+div#deck {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .back {
-    background: url('./assets/playing-card2.jpg')
+    background: url('./assets/playing-card2.jpg');
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center;  
 }

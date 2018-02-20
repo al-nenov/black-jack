@@ -19,7 +19,7 @@
     //deck of cards
     card = Object.assign(document.createElement("div"), {
         className: "card back",
-        style: "position:absolute; width:100px; height:200px;"
+        style: "position:absolute; width:200px; height:280px;"
     });
     const deck = document.getElementById("deck");
 
@@ -27,8 +27,8 @@
 
     for (let index = 0; index < 52; index += 1) {
         let newCard = card.cloneNode(true);
-        newCard.style.left = index*2;
-        newCard.style.top = index*2;
+        newCard.style.left = -(index);
+        newCard.style.top = -(index);
 
         deck.appendChild(newCard)
     }

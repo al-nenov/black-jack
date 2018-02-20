@@ -23,15 +23,15 @@
     });
     const deck = document.getElementById("deck");
 
-
-
     for (let index = 0; index < 52; index += 1) {
         let newCard = card.cloneNode(true);
         newCard.style.left = -(index);
         newCard.style.top = -(index);
 
-        deck.appendChild(newCard)
+        deck.appendChild(newCard);
+
     }
+
 
     const cardCont = document.getElementById("cardContainer");
     setTimeout(() => {

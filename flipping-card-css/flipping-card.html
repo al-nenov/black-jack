@@ -1,5 +1,11 @@
 <link rel="stylesheet" href="./fliping.css">
+
+<div id="dealerCards">dealr</div>
+
+
+
 <div class="flip-container" id="cardContainer">
+
     <div class="flipper">
         <div class="back">
             <!-- back content -->
@@ -13,28 +19,4 @@
     </div>
 </div>
 <div id="deck"></div>
-
-
-<script>
-    //deck of cards
-    card = Object.assign(document.createElement("div"), {
-        className: "card back",
-        style: "position:absolute; width:200px; height:280px;"
-    });
-    const deck = document.getElementById("deck");
-
-    for (let index = 0; index < 52; index += 1) {
-        let newCard = card.cloneNode(true);
-        newCard.style.left = -(index);
-        newCard.style.top = -(index);
-
-        deck.appendChild(newCard);
-
-    }
-
-
-    const cardCont = document.getElementById("cardContainer");
-    setTimeout(() => {
-        cardCont.classList += " hover";
-    }, 2000);
-</script>
+<script src="./fliping.js"></script>

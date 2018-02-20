@@ -19,10 +19,7 @@ let deck = [];
 
 function makeDeck() {
   for (color of colors) {
-    joinCards(color);
-  }
-  function joinCards(color) {
-    for (card of cards) {
+     for (card of cards) {
       deck.push(card + " of " + color);
     }
   }

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="./fliping.css">
+<div class="flip-container" id="cardContainer">
+    <div class="flipper">
+        <div class="back">
+            <!-- back content -->
+            back
+        </div>
+        <div class="front">
+            <!-- front content -->
+            front
+        </div>
+
+    </div>
+</div>
+<div id="deck"></div>
+
+
+<script>
+    //deck of cards
+    card = Object.assign(document.createElement("div"), {
+        className: "card back",
+        style: "position:absolute; width:100px; height:200px;"
+    });
+    const deck = document.getElementById("deck");
+
+
+
+    for (let index = 0; index < 52; index += 1) {
+        let newCard = card.cloneNode(true);
+        newCard.style.left = index*2;
+        newCard.style.top = index*2;
+
+        deck.appendChild(newCard)
+    }
+
+    const cardCont = document.getElementById("cardContainer");
+    setTimeout(() => {
+        cardCont.classList += " hover";
+    }, 2000);
+</script>

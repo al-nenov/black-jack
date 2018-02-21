@@ -19,7 +19,7 @@ let deck = [];
 
 function makeDeck() {
   for (color of colors) {
-     for (card of cards) {
+    for (card of cards) {
       deck.push(card + " of " + color);
     }
   }
@@ -39,7 +39,7 @@ class Player {
   }
 
   dealCards() {
-  this.clearCards();    
+    this.clearCards();
     for (let i = 1; i <= this.numOfCards; i += 1) {
       let currentCard = "card" + i;
       this[currentCard] = dealNewCard();
@@ -55,19 +55,19 @@ class Player {
     }
     card.innerHTML = activeCard;
   }
-  clearCards(){
-      let position =document.getElementById(this.name)
-      if(!!position){
-        position.innerHTML = "";
-      }
+  clearCards() {
+    let position = document.getElementById(this.name);
+    if (!!position) {
+      position.innerHTML = "";
+    }
   }
 }
 
 function dealNewCard() {
   const firstCard = deck[0];
-  if(firstCard === undefined){
-      alert("Deck is empty");
-      return;
+  if (firstCard === undefined) {
+    alert("Deck is empty");
+    return;
   }
   deck.splice(0, 1);
   return firstCard;
@@ -76,23 +76,19 @@ function dealNewCard() {
 let dealer = new Player(3, "dealer");
 let player = new Player(2, "player1");
 
-dealer.dealCards();
-player.dealCards();
-
+/*dealer.dealCards();
+player.dealCards();*/
 
 //Deal two cards with hit of a button
 let hitButton = document.getElementById("hit");
-hitButton.addEventListener("click",function(){
-    player.dealCards();
-})
-
+hitButton.addEventListener("click", function() {
+  player.dealCards();
+});
 
 //remaining cards
 /*const deckTable = document.getElementById("deck");
 deckTable.innerHTML = deck.length;
 */
-
-
 
 //Animate the deck
 
@@ -101,46 +97,52 @@ card = Object.assign(document.createElement("div"), {
   style: "position:absolute; "
 });
 const pileOfCards = document.getElementById("playTable"),
-_cards = document.getElementsByClassName("card");
+  _cards = document.getElementsByClassName("card");
 let index = 1,
-speed = 10;
-var dealTheDeck = setInterval(function () {
+  speed = 10;
+var dealTheDeck = setInterval(function() {
   let newCard = card.cloneNode(true);
-  newCard.style.left = -(index) + "px";
-  newCard.style.top = -(index) + "px";
+  newCard.style.left = -index + "px";
+  newCard.style.top = -index + "px";
   pileOfCards.appendChild(newCard);
   index += 1;
   if (index > 52) {
-      clearInterval(dealTheDeck);
-       deal(51);
-       deal(50);
-       deal(49);
+    clearInterval(dealTheDeck);
+    dealer.dealCards()
+    deal(51);
+    deal(50);
+    deal(49);
+    
   }
 }, speed);
 
-
 //Deal card to dealer
-function deal(index){
-  let dealerCardsPlaceholder = document.getElementsByClassName('cardsPlaceholder');
+function deal(index) {
+  let dealerCardsPlaceholder = document.getElementsByClassName(
+    "cardsPlaceholder"
+  );
   let topCard = _cards[index];
   let offsets = {
-      pile:{
-          top:pileOfCards.offsetTop,
-          left:pileOfCards.offsetLeft
-      },
-      card:{
-          top:+topCard.style.top.split("px")[0],
-          left:+topCard.style.left.split("px")[0]
-      },
-      placeholder:{
-          top:dealerCardsPlaceholder[51 - index].offsetTop,
-          left:dealerCardsPlaceholder[51 - index].offsetLeft
-      }
-  }
-
-  
-  topCard.style.left =  offsets.card.left - (offsets.pile.left - (offsets.card.left * -1) - offsets.placeholder.left) +"px";
-  topCard.style.top = offsets.card.top - (offsets.pile.top - (offsets.card.top * -1) - offsets.placeholder.top) + "px";
-  
+    pile: {
+      top: pileOfCards.offsetTop,
+      left: pileOfCards.offsetLeft
+    },
+    card: {
+      top: +topCard.style.top.split("px")[0],
+      left: +topCard.style.left.split("px")[0]
+    },
+    placeholder: {
+      top: dealerCardsPlaceholder[51 - index].offsetTop,
+      left: dealerCardsPlaceholder[51 - index].offsetLeft
+    }
+  };
+  topCard.innerHTML = dealer.card1;
+  topCard.style.left =
+    offsets.card.left -
+    (offsets.pile.left - offsets.card.left * -1 - offsets.placeholder.left) +
+    "px";
+  topCard.style.top =
+    offsets.card.top -
+    (offsets.pile.top - offsets.card.top * -1 - offsets.placeholder.top) +
+    "px";
 }
-

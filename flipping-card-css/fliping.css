@@ -46,21 +46,30 @@
 
 
 /**/
-
+#playTable {
+  position: absolute;
+  top: 450px;
+  left: 996px;
+}
 .card{
   width:200px;
   height:280px;
-}
-div#deck {
-    position: absolute;
-    bottom: 350px;
-    right: 350px;
+  position: fixed;
+  bottom:0;
+  right:0;
 }
 
+.cardsPlaceholder{
+  border:3px solid;
+  width:250px;
+  height: 300px;;
+  margin:20px;
+  display: inline-block;
+}
 .back {
     background: url('./assets/playing-card2.jpg');
     background-size:     cover;                     
     background-repeat:   no-repeat;
     background-position: center center;  
-    transition: 12s;
+    transition: 2s;
 }

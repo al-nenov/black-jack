@@ -32,6 +32,8 @@ function randomize(arr) {
 makeDeck();
 randomize(deck);
 
+//Players
+
 class Player {
   constructor(numOfCards, name) {
     this.numOfCards = numOfCards;
@@ -43,6 +45,8 @@ class Player {
     for (let i = 1; i <= this.numOfCards; i += 1) {
       let currentCard = "card" + i;
       this[currentCard] = dealNewCard();
+      animatedDeal(deck.length);
+
       this.drawCards(this[currentCard], this["name"]);
     }
   }
@@ -93,8 +97,19 @@ deckTable.innerHTML = deck.length;
 //Animate the deck
 
 card = Object.assign(document.createElement("div"), {
-  className: "card back",
-  style: "position:absolute; "
+  className: "flip-container card back",
+  style: "position:absolute; ",
+  innerHTML: `<div class="flipper">
+  <div class="back">
+      <!-- back content -->
+      back
+  </div>
+  <div class="front">
+      <!-- front content -->
+      front
+  </div>
+
+</div>`
 });
 const pileOfCards = document.getElementById("playTable"),
   _cards = document.getElementsByClassName("card");
@@ -108,16 +123,16 @@ var dealTheDeck = setInterval(function() {
   index += 1;
   if (index > 52) {
     clearInterval(dealTheDeck);
-    dealer.dealCards()
-    deal(51);
+    dealer.dealCards();
+    /*deal(51);
     deal(50);
     deal(49);
-    
+    deal(48)*/
   }
 }, speed);
 
 //Deal card to dealer
-function deal(index) {
+function animatedDeal(index) {
   let dealerCardsPlaceholder = document.getElementsByClassName(
     "cardsPlaceholder"
   );
@@ -136,7 +151,8 @@ function deal(index) {
       left: dealerCardsPlaceholder[51 - index].offsetLeft
     }
   };
-  topCard.innerHTML = dealer.card1;
+  topCard.querySelector(".front").innerHTML = dealer["card" + (52-index)];
+
   topCard.style.left =
     offsets.card.left -
     (offsets.pile.left - offsets.card.left * -1 - offsets.placeholder.left) +
@@ -145,4 +161,7 @@ function deal(index) {
     offsets.card.top -
     (offsets.pile.top - offsets.card.top * -1 - offsets.placeholder.top) +
     "px";
+
+    topCard.classList.remove("back");
+    topCard.classList.add("hover");
 }

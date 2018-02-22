@@ -48,19 +48,9 @@ class Player {
       let currentCard = "card" + i;
       this[currentCard] = dealNewCard();
       animatedDeal(deck.length, this, i);
-      this.drawCards(this[currentCard], this["name"]);
     }
   }
 
-  drawCards(activeCard, placeholder) {
-    let position = document.getElementById(placeholder);
-    const card = document.createElement("div");
-    if (!!position) {
-      position.appendChild(card);
-    }
-    card.innerHTML = activeCard.suit;
-  }
-  
 }
 function clearPlayerCards() {
   fade(_cards[deck.length + 1]);
@@ -80,8 +70,6 @@ function dealNewCard() {
 let dealer = new Player(3, "dealer");
 let player = new Player(2, "player1");
 
-/*dealer.dealCards();
-player.dealCards();*/
 
 //Deal two cards with hit of a button
 let hitButton = document.getElementById("hit");
@@ -184,7 +172,7 @@ function animatedDeal(index, player, itteration) {
 }
 
 
-//Fade ous the cards
+//Fade out the cards
 function fade(element) {
   var op = 1;  // initial opacity
   var timer = setInterval(function () {

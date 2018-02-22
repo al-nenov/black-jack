@@ -20,7 +20,10 @@ let deck = [];
 function makeDeck() {
   for (color of colors) {
     for (card of cards) {
-      deck.push(card + " of " + color);
+      deck.push({
+        rank: card,
+        suit: color
+      });
     }
   }
 }
@@ -41,12 +44,10 @@ class Player {
   }
 
   dealCards() {
-    this.clearCards();
     for (let i = 1; i <= this.numOfCards; i += 1) {
       let currentCard = "card" + i;
       this[currentCard] = dealNewCard();
-      animatedDeal(deck.length);
-
+      animatedDeal(deck.length, this, i);
       this.drawCards(this[currentCard], this["name"]);
     }
   }
@@ -57,14 +58,13 @@ class Player {
     if (!!position) {
       position.appendChild(card);
     }
-    card.innerHTML = activeCard;
+    card.innerHTML = activeCard.suit;
   }
-  clearCards() {
-    let position = document.getElementById(this.name);
-    if (!!position) {
-      position.innerHTML = "";
-    }
-  }
+  
+}
+function clearPlayerCards() {
+  fade(_cards[deck.length + 1]);
+  fade(_cards[deck.length]);
 }
 
 function dealNewCard() {
@@ -106,6 +106,7 @@ card = Object.assign(document.createElement("div"), {
   </div>
   <div class="front">
       <!-- front content -->
+     
       front
   </div>
 
@@ -124,19 +125,28 @@ var dealTheDeck = setInterval(function() {
   if (index > 52) {
     clearInterval(dealTheDeck);
     dealer.dealCards();
-    /*deal(51);
-    deal(50);
-    deal(49);
-    deal(48)*/
   }
 }, speed);
 
 //Deal card to dealer
-function animatedDeal(index) {
+function animatedDeal(index, player, itteration) {
   let dealerCardsPlaceholder = document.getElementsByClassName(
     "cardsPlaceholder"
   );
+  let activePlayerCounter;
+  if(player.name !=="dealer"){
+    activePlayerCounter = 3;
+  
+  }else{
+    activePlayerCounter = 0;
+  }
   let topCard = _cards[index];
+  if(activePlayerCounter){
+   topCard.addEventListener("click", function(){
+     fade(this)
+   });
+  }
+
   let offsets = {
     pile: {
       top: pileOfCards.offsetTop,
@@ -147,21 +157,43 @@ function animatedDeal(index) {
       left: +topCard.style.left.split("px")[0]
     },
     placeholder: {
-      top: dealerCardsPlaceholder[51 - index].offsetTop,
-      left: dealerCardsPlaceholder[51 - index].offsetLeft
+      top: dealerCardsPlaceholder[itteration -1 + activePlayerCounter].offsetTop,
+      left: dealerCardsPlaceholder[itteration -1 + activePlayerCounter].offsetLeft
     }
   };
-  topCard.querySelector(".front").innerHTML = dealer["card" + (52-index)];
+  let currentCard = player["card" + itteration];
+  let frontOfCard =  topCard.querySelector(".front");
+  frontOfCard.classList.add((currentCard.suit).toLowerCase());
+  frontOfCard.classList.add("rank-" + (currentCard.rank).toLowerCase());
+  frontOfCard.innerHTML = ` <div class="diams  rank-${currentCard.suit + " " + currentCard.rank}">
+  <span class="rank">${currentCard.rank}</span>
+  <span class="suit"></span>
+</div>`;
 
   topCard.style.left =
     offsets.card.left -
-    (offsets.pile.left - offsets.card.left * -1 - offsets.placeholder.left) +
+    (offsets.pile.left - offsets.card.left * -1 - offsets.placeholder.left  -30) +
     "px";
   topCard.style.top =
     offsets.card.top -
-    (offsets.pile.top - offsets.card.top * -1 - offsets.placeholder.top) +
+    (offsets.pile.top - offsets.card.top * -1 - offsets.placeholder.top -10) +
     "px";
 
-    topCard.classList.remove("back");
-    topCard.classList.add("hover");
+  topCard.classList.remove("back");
+  topCard.classList.add("hover");
+}
+
+
+//Fade ous the cards
+function fade(element) {
+  var op = 1;  // initial opacity
+  var timer = setInterval(function () {
+      if (op <= 0.1){
+          clearInterval(timer);
+          element.style.display = 'none';
+      }
+      element.style.opacity = op;
+      //element.style.opacity =  (op * 100);
+      op -= op * 0.1;
+  }, 50);
 }

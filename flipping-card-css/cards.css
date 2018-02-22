@@ -1,0 +1,206 @@
+.front.diamonds,
+.front.hearts{
+    color: red;
+}
+.rank-j.diamonds  { background-image: url(./assets/faces/JD.gif); }
+.rank-j.hearts { background-image: url(./assets/faces/JH.gif); }
+.rank-j.spades { background-image: url(./assets/faces/JS.gif); }
+.rank-j.clubs  { background-image: url(./assets/faces/JC.gif); }
+
+.rank-d.diamonds  { background-image: url(./assets/faces/QD.gif); }
+.rank-d.hearts { background-image: url(./assets/faces/QH.gif); }
+.rank-d.spades { background-image: url(./assets/faces/QS.gif); }
+.rank-d.clubs  { background-image: url(./assets/faces/QC.gif); }
+
+.rank-k.diamonds  { background-image: url(./assets/faces/KD.gif); }
+.rank-k.hearts { background-image: url(./assets/faces/KH.gif); }
+.rank-k.spades { background-image: url(./assets/faces/KS.gif); }
+.rank-k.clubs  { background-image: url(./assets/faces/KC.gif); }
+
+/*____________ symbols in the middle (faces as images) ____________*/
+
+.rank-j .suit:after,
+.rank-d .suit:after,
+.rank-k .suit:after {
+    content: '';
+}
+.rank-j,
+.rank-d,
+.rank-k,
+.joker {
+    background-repeat: no-repeat;
+    background-position: center;
+    /* @change: smaller cards: more negative distance from the left
+       bigger cards: 0 or more positive distance from the left */
+
+    /* for a centered full background image:
+    background-position: .35em 0;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    -khtml-background-size: contain;
+    background-size: contain;
+    */
+}
+
+/*____________ symbols in the middle (suits, full) ____________*/
+
+/* diamonds */
+.rank-2.diamonds .suit:after {
+    content: "\2666 \A\A\2666";
+}
+.rank-3.diamonds .suit:after {
+    content: "\2666 \A\2666 \A\2666";
+}
+.rank-4.diamonds .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\A\2666\00A0\00A0\00A0\2666";
+}
+.rank-5.diamonds .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.rank-6.diamonds .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.rank-7.diamonds .suit:after {
+    content: "\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666";
+}
+.rank-8.diamonds .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.rank-9.diamonds .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.rank-10.diamonds .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+
+/* hearts */
+.rank-2.hearts .suit:after {
+    content: "\2665 \A\A\2665";
+}
+.rank-3.hearts .suit:after {
+    content: "\2665 \A\2665 \A\2665";
+}
+.rank-4.hearts .suit:after {
+    content: "\2665\00A0\00A0\00A0\2665 \A\A\2665\00A0\00A0\00A0\2665";
+}
+.rank-5.hearts .suit:after {
+    content: "\2665\00A0\00A0\00A0\2665 \A\2665 \A\2665\00A0\00A0\00A0\2665";
+}
+.rank-6.hearts .suit:after {
+    content: "\2665\00A0\00A0\00A0\2665 \A\2665\00A0\00A0\00A0\2665 \A\2665\00A0\00A0\00A0\2665";
+}
+.rank-7.hearts .suit:after {
+    content: "\2665\00A0\00A0\2665 \A\2665\00A0\2665\00A0\2665 \A\2665\00A0\00A0\2665";
+}
+.rank-8.hearts .suit:after {
+    content: "\2665\00A0\2665\00A0\2665 \A\2665\00A0\00A0\2665 \A\2665\00A0\2665\00A0\2665";
+}
+.rank-9.hearts .suit:after {
+    content: "\2665\00A0\2665\00A0\2665 \A\2665\00A0\2665\00A0\2665 \A\2665\00A0\2665\00A0\2665";
+}
+.rank-10.hearts .suit:after {
+    content: "\2665\00A0\2665\00A0\2665 \A\2665\00A0\2665\00A0\2665\00A0\2665 \A\2665\00A0\2665\00A0\2665";
+}
+
+/* spades */
+.rank-2.spades .suit:after {
+    content: "\2660 \A\A\2660";
+}
+.rank-3.spades .suit:after {
+    content: "\2660 \A\2660 \A\2660";
+}
+.rank-4.spades .suit:after {
+    content: "\2660\00A0\00A0\00A0\2660 \A\A\2660\00A0\00A0\00A0\2660";
+}
+.rank-5.spades .suit:after {
+    content: "\2660\00A0\00A0\00A0\2660 \A\2660 \A\2660\00A0\00A0\00A0\2660";
+}
+.rank-6.spades .suit:after {
+    content: "\2660\00A0\00A0\00A0\2660 \A\2660\00A0\00A0\00A0\2660 \A\2660\00A0\00A0\00A0\2660";
+}
+.rank-7.spades .suit:after {
+    content: "\2660\00A0\00A0\2660 \A\2660\00A0\2660\00A0\2660 \A\2660\00A0\00A0\2660";
+}
+.rank-8.spades .suit:after {
+    content: "\2660\00A0\2660\00A0\2660 \A\2660\00A0\00A0\2660 \A\2660\00A0\2660\00A0\2660";
+}
+.rank-9.spades .suit:after {
+    content: "\2660\00A0\2660\00A0\2660 \A\2660\00A0\2660\00A0\2660 \A\2660\00A0\2660\00A0\2660";
+}
+.rank-10.spades .suit:after {
+    content: "\2660\00A0\2660\00A0\2660 \A\2660\00A0\2660\00A0\2660\00A0\2660 \A\2660\00A0\2660\00A0\2660";
+}
+
+/* clubs */
+.rank-2.clubs .suit:after {
+    content: "\2663 \A\A\2663";
+}
+.rank-3.clubs .suit:after {
+    content: "\2663 \A\2663 \A\2663";
+}
+.rank-4.clubs .suit:after {
+    content: "\2663\00A0\00A0\00A0\2663 \A\A\2663\00A0\00A0\00A0\2663";
+}
+.rank-5.clubs .suit:after {
+    content: "\2663\00A0\00A0\00A0\2663 \A\2663 \A\2663\00A0\00A0\00A0\2663";
+}
+.rank-6.clubs .suit:after {
+    content: "\2663\00A0\00A0\00A0\2663 \A\2663\00A0\00A0\00A0\2663 \A\2663\00A0\00A0\00A0\2663";
+}
+.rank-7.clubs .suit:after {
+    content: "\2663\00A0\00A0\2663 \A\2663\00A0\2663\00A0\2663 \A\2663\00A0\00A0\2663";
+}
+.rank-8.clubs .suit:after {
+    content: "\2663\00A0\2663\00A0\2663 \A\2663\00A0\00A0\2663 \A\2663\00A0\2663\00A0\2663";
+}
+.rank-9.clubs .suit:after {
+    content: "\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663";
+}
+.rank-10.clubs .suit:after {
+    content: "\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663\00A0\2663 \A\2663\00A0\2663\00A0\2663";
+}
+/* big suits in middle */
+.simpleCards  .suit:after,
+ .rank-a .suit:after {
+    font-family: Arial, sans-serif;
+    line-height: 1.9;
+    font-size: 13em;
+    bottom: .35em;
+}
+.simpleCards .diams .suit:after,
+ .rank-a.diams .suit:after {
+    content: "\2666";
+    right: .4em;
+}
+.simpleCards .hearts .suit:after,
+ .rank-a.hearts .suit:after {
+    content: "\2665";
+    right: .35em;
+}
+.simpleCards .spades .suit:after,
+ .rank-a.spades .suit:after {
+    content: "\2660";
+    right: .35em;
+}
+.simpleCards .clubs .suit:after,
+ .rank-a.clubs .suit:after {
+    content: "\2663";
+    right: .3em;
+}
+
+
+
+.suit:after {
+    display: block;
+    margin-top: -0.6em;
+    text-align: center;
+    white-space: pre;
+    line-height: 1.5;
+    font-size: 3.3em;
+    word-spacing: -0.15em;
+}
+.rank {
+    font-size: 44pt;
+    padding-left: 20px;
+}

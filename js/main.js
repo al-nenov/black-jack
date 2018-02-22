@@ -87,18 +87,7 @@ deckTable.innerHTML = deck.length;
 card = Object.assign(document.createElement("div"), {
   className: "flip-container card back",
   style: "position:absolute; ",
-  innerHTML: `<div class="flipper">
-  <div class="back">
-      <!-- back content -->
-      back
-  </div>
-  <div class="front">
-      <!-- front content -->
-     
-      front
-  </div>
-
-</div>`
+  innerHTML: `<div class="flipper"><div class="back"></div><div class="front"></div></div>`
 });
 const pileOfCards = document.getElementById("playTable"),
   _cards = document.getElementsByClassName("card");

@@ -7,20 +7,20 @@
 .front.hearts{
     color: red;
 }
-.rank-j.diamonds  { background-image: url(./assets/faces/JD.gif); }
-.rank-j.hearts { background-image: url(./assets/faces/JH.gif); }
-.rank-j.spades { background-image: url(./assets/faces/JS.gif); }
-.rank-j.clubs  { background-image: url(./assets/faces/JC.gif); }
+.rank-j.diamonds  { background-image: url(../assets/faces/JD.gif); }
+.rank-j.hearts { background-image: url(../assets/faces/JH.gif); }
+.rank-j.spades { background-image: url(../assets/faces/JS.gif); }
+.rank-j.clubs  { background-image: url(../assets/faces/JC.gif); }
 
-.rank-d.diamonds  { background-image: url(./assets/faces/QD.gif); }
-.rank-d.hearts { background-image: url(./assets/faces/QH.gif); }
-.rank-d.spades { background-image: url(./assets/faces/QS.gif); }
-.rank-d.clubs  { background-image: url(./assets/faces/QC.gif); }
+.rank-d.diamonds  { background-image: url(../assets/faces/QD.gif); }
+.rank-d.hearts { background-image: url(../assets/faces/QH.gif); }
+.rank-d.spades { background-image: url(../assets/faces/QS.gif); }
+.rank-d.clubs  { background-image: url(../assets/faces/QC.gif); }
 
-.rank-k.diamonds  { background-image: url(./assets/faces/KD.gif); }
-.rank-k.hearts { background-image: url(./assets/faces/KH.gif); }
-.rank-k.spades { background-image: url(./assets/faces/KS.gif); }
-.rank-k.clubs  { background-image: url(./assets/faces/KC.gif); }
+.rank-k.diamonds  { background-image: url(../assets/faces/KD.gif); }
+.rank-k.hearts { background-image: url(../assets/faces/KH.gif); }
+.rank-k.spades { background-image: url(../assets/faces/KS.gif); }
+.rank-k.clubs  { background-image: url(../assets/faces/KC.gif); }
 
 /*____________ symbols in the middle (faces as images) ____________*/
 
@@ -170,11 +170,11 @@
  .rank-a .suit:after {
     font-family: Arial, sans-serif;
     line-height: 1.9;
-    font-size: 13em;
+    font-size: 6em;
     bottom: .35em;
 }
-.simpleCards .diams .suit:after,
- .rank-a.diams .suit:after {
+.simpleCards .diamonds .suit:after,
+ .rank-a.diamonds .suit:after {
     content: "\2666";
     right: .4em;
 }
@@ -198,10 +198,10 @@
 
 .suit:after {
     display: block;
-    margin-top: -0.6em;
+    margin-top: 0em;
     text-align: center;
     white-space: pre;
-    line-height: 1.5;
+    line-height: 1;
     font-size: 3.3em;
     word-spacing: -0.15em;
 }

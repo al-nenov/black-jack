@@ -1,0 +1,79 @@
+/* Large desktop */
+@media (min-width: 1200px) { 
+    
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 480px) and (max-width: 979px) {
+   body{
+       background-color: blueviolet;    
+   }
+   .cardsPlaceholder {
+       width: 220px;
+       height: 250px;
+     
+       }
+       .flip-container, .back, .front, card {
+       width: 150px;
+       height: 230px;
+       }
+       #playTable {
+       top: 363px;
+       left: 684px;
+     }
+     .card{
+           font-size: 0.7em;
+     }
+     .rank-j, .rank-d, .rank-k, .joker {
+
+   background-size: 84%;
+     }
+     .rank {
+   font-size: 3em;
+     }
+     .suit:after {
+
+margin-top: -0.3em;
+
+line-height: 1.5;
+
+}
+}
+
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+   body{
+       background-color: yellowgreen;
+   }
+   .cardsPlaceholder {
+       width: 100px;
+       height: 180px;
+     
+       }
+       .flip-container, .back, .front, card {
+       width: 100px;
+       height: 150px;
+       }
+       #playTable {
+        top: 508px;
+        left: 174px;
+    }
+     .card{
+           font-size: 0.7em;
+     }
+     .rank-j, .rank-d, .rank-k, .joker {
+
+   background-size: 84%;
+     }
+     .rank {
+   font-size: 3em;
+     }
+     .suit:after {
+
+margin-top: -0.3em;
+
+line-height: 0.8;
+
+}
+}

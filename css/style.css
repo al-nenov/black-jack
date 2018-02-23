@@ -50,6 +50,7 @@ button#hit {
 .flip-container,
 .back,
 .front {
+  border-radius: 5px;
   width: 200px;
   height: 280px;
 }

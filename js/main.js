@@ -13,10 +13,10 @@ const cards = [
   "D",
   "K",
   "A"
-];
-const colors = ["Spades", "Hearts", "Diamonds", "Clubs"];
+],
+colors = ["Spades", "Hearts", "Diamonds", "Clubs"];
 let deck = [];
-
+//Put together one whole deck
 function makeDeck() {
   for (color of colors) {
     for (card of cards) {
@@ -52,11 +52,14 @@ class Player {
   }
 
 }
+
+//Remove cards from player slots
 function clearPlayerCards() {
-  fade(_cards[deck.length + 1]);
-  fade(_cards[deck.length]);
+  fade(containingDeck[deck.length + 1]);
+  fade(containingDeck[deck.length]);
 }
 
+//Return the top of the deck card
 function dealNewCard() {
   const firstCard = deck[0];
   if (firstCard === undefined) {
@@ -67,47 +70,51 @@ function dealNewCard() {
   return firstCard;
 }
 
+
+//Create dealer and players
 let dealer = new Player(3, "dealer");
 let player = new Player(2, "player1");
 
 
-//Deal two cards with hit of a button
+//Deal cards to player with a hit of a button
 let hitButton = document.getElementById("hit");
 hitButton.addEventListener("click", function() {
+  clearPlayerCards();
   player.dealCards();
 });
 
-//remaining cards
-/*const deckTable = document.getElementById("deck");
-deckTable.innerHTML = deck.length;
-*/
 
-//Animate the deck
-
+//Div element representing a card
 card = Object.assign(document.createElement("div"), {
   className: "flip-container card back",
   style: "position:absolute; ",
   innerHTML: `<div class="flipper"><div class="back"></div><div class="front"></div></div>`
 });
-const pileOfCards = document.getElementById("playTable"),
-  _cards = document.getElementsByClassName("card");
+
+
+//Create div elements for a whole deck of cards
+const deckPlaceHolder = document.getElementById("playTable"),
+containingDeck = document.getElementsByClassName("card");
+
 let index = 1,
   speed = 10;
 var dealTheDeck = setInterval(function() {
   let newCard = card.cloneNode(true);
   newCard.style.left = -index + "px";
   newCard.style.top = -index + "px";
-  pileOfCards.appendChild(newCard);
+  deckPlaceHolder.appendChild(newCard);
   index += 1;
   if (index > 52) {
     clearInterval(dealTheDeck);
     dealer.dealCards();
+    player.dealCards();
   }
 }, speed);
 
-//Deal card to dealer
+
+//Deal cards with animation
 function animatedDeal(index, player, itteration) {
-  let dealerCardsPlaceholder = document.getElementsByClassName(
+  let cardsPlaceholder = document.getElementsByClassName(
     "cardsPlaceholder"
   );
   let activePlayerCounter;
@@ -117,25 +124,26 @@ function animatedDeal(index, player, itteration) {
   }else{
     activePlayerCounter = 0;
   }
-  let topCard = _cards[index];
+  let topCard = containingDeck[index];
   if(activePlayerCounter){
    topCard.addEventListener("click", function(){
      fade(this)
    });
   }
+  
 
   let offsets = {
     pile: {
-      top: pileOfCards.offsetTop,
-      left: pileOfCards.offsetLeft
+      top: deckPlaceHolder.offsetTop,
+      left: deckPlaceHolder.offsetLeft
     },
     card: {
       top: +topCard.style.top.split("px")[0],
       left: +topCard.style.left.split("px")[0]
     },
     placeholder: {
-      top: dealerCardsPlaceholder[itteration -1 + activePlayerCounter].offsetTop,
-      left: dealerCardsPlaceholder[itteration -1 + activePlayerCounter].offsetLeft
+      top: cardsPlaceholder[itteration -1 + activePlayerCounter].offsetTop,
+      left: cardsPlaceholder[itteration -1 + activePlayerCounter].offsetLeft
     }
   };
   let currentCard = player["card" + itteration];
@@ -172,5 +180,5 @@ function fade(element) {
       element.style.opacity = op;
       //element.style.opacity =  (op * 100);
       op -= op * 0.1;
-  }, 50);
+  }, 20);
 }

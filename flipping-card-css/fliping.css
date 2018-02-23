@@ -1,3 +1,43 @@
+body {
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,110,46,0.88) 0%, rgba(0,110,46,0.88) 40%, rgba(0,110,46,0.91) 60%, rgba(0,110,46,0.91) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(0,110,46,0.88) 0%,rgba(0,110,46,0.88) 40%,rgba(0,110,46,0.91) 60%,rgba(0,110,46,0.91) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(0,110,46,0.88) 0%,rgba(0,110,46,0.88) 40%,rgba(0,110,46,0.91) 60%,rgba(0,110,46,0.91) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0006e2e', endColorstr='#e8006e2e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+div#dealerCards h4, #playerCards h4 {
+  font-size: 30px;
+  color: white;
+}
+button#hit {
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0px 0px 8px 7px rgba(210, 188, 30, 0.22);
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  border: 1px solid chocolate;
+  background-color: white;
+  color: green;
+  font-size: 3em;
+}
+
+button#hit:hover {
+  text-shadow: -3px 2px 3px  chocolate;
+}
+
+
+div#dealerCards {
+  display: flex;
+}
+
+div#playerCards {
+  display: inline-flex;
+}
+
+button#hit {
+  display: inline-flex;
+}
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
@@ -74,4 +114,23 @@
     background-repeat:   no-repeat;
     background-position: center center;  
    
+}
+
+@media screen and (max-width: 1366px) and (min-width: 1024px) {
+  body{
+      background:red;
+  }
+  .cardsPlaceholder {
+  width: 220px;
+  height: 250px;
+
+  }
+  .card {
+  width: 150px;
+  height: 230px;
+  }
+  #playTable {
+  top: 250px;
+  left: 996px;
+}
 }

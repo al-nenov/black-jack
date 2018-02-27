@@ -93,16 +93,22 @@ card = Object.assign(document.createElement("div"), {
 
 
 //Create div elements for a whole deck of cards
-const deckPlaceHolder = document.getElementById("playTable"),
-containingDeck = document.getElementsByClassName("card");
+//const deckPlaceHolder = document.getElementById("playTable"),
+const containingDeck = document.getElementsByClassName("card"),
+initalPos = {
+  left:660,
+  top:380
+};
+
 
 let index = 1,
   speed = 10;
 var dealTheDeck = setInterval(function() {
   let newCard = card.cloneNode(true);
-  newCard.style.left = -index + "px";
-  newCard.style.top = -index + "px";
-  deckPlaceHolder.appendChild(newCard);
+  newCard.style.left = initalPos.left + -index + "px";
+  newCard.style.top = initalPos.top + -index + "px";
+  //deckPlaceHolder.appendChild(newCard);
+  document.body.appendChild(newCard);
   index += 1;
   if (index > 52) {
     clearInterval(dealTheDeck);
@@ -133,10 +139,6 @@ function animatedDeal(index, player, itteration) {
   
 
   let offsets = {
-    pile: {
-      top: deckPlaceHolder.offsetTop,
-      left: deckPlaceHolder.offsetLeft
-    },
     card: {
       top: +topCard.style.top.split("px")[0],
       left: +topCard.style.left.split("px")[0]
@@ -155,14 +157,9 @@ function animatedDeal(index, player, itteration) {
   <span class="suit"></span>
 </div>`;
 
-  topCard.style.left =
-    offsets.card.left -
-    (offsets.pile.left - offsets.card.left * -1 - offsets.placeholder.left  -30) +
-    "px";
-  topCard.style.top =
-    offsets.card.top -
-    (offsets.pile.top - offsets.card.top * -1 - offsets.placeholder.top -10) +
-    "px";
+  topCard.style.left = (offsets.placeholder.left ) + "px";
+
+  topCard.style.top =(offsets.placeholder.top) +  "px";
 
   topCard.classList.remove("back");
   topCard.classList.add("hover");
@@ -180,5 +177,5 @@ function fade(element) {
       element.style.opacity = op;
       //element.style.opacity =  (op * 100);
       op -= op * 0.1;
-  }, 20);
+  }, 30);
 }
